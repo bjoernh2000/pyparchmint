@@ -113,7 +113,8 @@ class Connection:
 
         self.name = json["name"]
         self.ID = json["id"]
-        self.layer = device_ref.get_layer(json["layer"])
+        if "layer" in json.keys():
+            self.layer = device_ref.get_layer(json["layer"])
 
         # Pull out the paths
         if "paths" in json["params"].keys():
